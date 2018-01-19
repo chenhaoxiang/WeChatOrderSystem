@@ -28,3 +28,6 @@ spring:
 wechat:
   mpAppId: wxec6162ffa649896b
   mpAppSecret: 40567729325064e5590df98612846634
+  mchId: 1409146202
+  mchKey: c96503d34ca432c601361f969fd8d85
+  keyPath:
