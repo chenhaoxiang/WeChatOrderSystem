@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+    <!-- debug : 默认为false ，设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。
+    scan : 配置文件如果发生改变，将会重新加载，默认值为true；
+    scanPeriod : 检测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位时毫秒，
+    当scan为true时，这个属性生效，默认时间间隔为1min。    -->
+
+    <!-- consoleLog配置项需要ConsoleAppender类处理 配置控制台的输出 -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout"><!-- layout展示的形式 -->
+            <pattern>logbak: %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!-- 控制输出到文件 每天输出一个文件，滚动输出-->
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 过滤ERROR -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <!-- 可以从LevelFilter->AbstractMatcherFilter找下去 -->
+            <onMatch>DENY</onMatch><!-- 命中ERROR就禁止掉 -->
+            <onMismatch>ACCEPT</onMismatch><!-- 没命中ERROR就运行这种规则 -->
+        </filter>
+
+        <encoder>
+            <pattern>
+                logbak: %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+        <!-- 滚动策略 TimeBasedRollingPolicy按照时间滚动-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>F://log//info.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 控制输出到文件 每天输出一个文件，滚动输出-->
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 根据范围来过滤 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>
+                logbak: %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+        <!-- 滚动策略 TimeBasedRollingPolicy按照时间滚动-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>F://log//error.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- root：logger的根节点，就这一个，默认名称就是root
+        level：日志级别
+        appender-ref：确定使用哪个appender
+         -->
+    <!-- 配置使用appender配置 -->
+    <root level="info"><!-- root-整个项目都适用 info级别-->
+        <appender-ref ref="consoleLog" />
+        <appender-ref ref="fileInfoLog" />
+        <appender-ref ref="fileErrorLog" />
+    </root>
+
+</configuration>

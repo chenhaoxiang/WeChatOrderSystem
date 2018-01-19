@@ -1,0 +1,30 @@
+# logback的简单配置
+#logging:
+#  pattern:
+#  配置日志格式
+#    console: "%d - %msg%n"
+#  配置日志级别  日志级别可以指定到某个类
+#  level:
+#    cn.chenhaoxiang.LoggerTest: debug
+# 配置日志文件。可以自定义日志文件名字
+#  file:
+#  配置存储路径 不配置就不会保存到文件 默认spring.log
+#  path:
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 1234
+    url: jdbc:mysql://127.0.0.1/wechatorder?characterEncoding=utf-8&userSSL=false
+  jpa:
+  # 打印SQL
+    show-sql: true
+    # 为null的属性不序列化成json字符串 - 也就是前端不会看到为null的属性
+#  jackson:
+#    default-property-inclusion: non_null
+#server:
+  # 配置Url项目名 也就是URl的前缀
+#  context-path: /sell
+wechat:
+  mpAppId: wxec6162ffa649896b
+  mpAppSecret: 40567729325064e5590df98612846634

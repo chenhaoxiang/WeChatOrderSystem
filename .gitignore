@@ -1,0 +1,7 @@
+### IntelliJ IDEA ###
+/sell/.idea
+*.iws
+*.iml
+*.ipr
+
+/sell/target
