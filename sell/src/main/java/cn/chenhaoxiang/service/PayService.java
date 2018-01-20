@@ -2,6 +2,7 @@ package cn.chenhaoxiang.service;
 
 import cn.chenhaoxiang.dto.OrderDTO;
 import com.lly835.bestpay.model.PayResponse;
+import com.lly835.bestpay.model.RefundResponse;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,4 +24,10 @@ public interface PayService {
      * @param notifyData
      */
     PayResponse notify(String notifyData);
+
+    /**
+     * 退款
+     * @param orderDTO
+     */
+    RefundResponse refund(OrderDTO orderDTO);
 }

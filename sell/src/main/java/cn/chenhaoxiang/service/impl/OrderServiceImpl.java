@@ -13,6 +13,7 @@ import cn.chenhaoxiang.enums.PayStatusEnum;
 import cn.chenhaoxiang.enums.ResultEnum;
 import cn.chenhaoxiang.exception.SellException;
 import cn.chenhaoxiang.service.OrderService;
+import cn.chenhaoxiang.service.PayService;
 import cn.chenhaoxiang.service.ProductInfoService;
 import cn.chenhaoxiang.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderDetailDao orderDetailDao;
     @Autowired
     private OrderMasterDao orderMasterDao;
+    @Autowired
+    private PayService payService;
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -161,7 +164,8 @@ public class OrderServiceImpl implements OrderService {
         productInfoService.increaseStock(cartDTOList);
         //如果用户已支付，需要给用户退款
         if(orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())){
-            //TODO 进行退款
+            //进行退款
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }

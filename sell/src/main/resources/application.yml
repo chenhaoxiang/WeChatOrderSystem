@@ -26,8 +26,8 @@ spring:
   # 配置Url项目名 也就是URl的前缀
 #  context-path: /sell
 wechat:
-  mpAppId: wxec6162ffa649896b
-  mpAppSecret: 40567729325064e5590df98612846634
+  mpAppId: wxe007de634e454627
+  mpAppSecret: ed8bcd6a5acb51382cb967f1cf19ac89
   mchId: 1409146202
   mchKey: c96503d34ca432c601361f969fd8d85
   keyPath:   #文件路径
