@@ -79,6 +79,12 @@
 			<version>1.1.0</version>
 		</dependency>
 
+		<!-- freemarker模板 依赖 动态注入参数发起支付用到-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

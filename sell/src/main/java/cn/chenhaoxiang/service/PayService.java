@@ -1,6 +1,7 @@
 package cn.chenhaoxiang.service;
 
 import cn.chenhaoxiang.dto.OrderDTO;
+import com.lly835.bestpay.model.PayResponse;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,5 +11,10 @@ import cn.chenhaoxiang.dto.OrderDTO;
  * Explain: 支付
  */
 public interface PayService {
-    void create(OrderDTO orderDTO);
+    /**
+     * 发起支付
+     * @param orderDTO
+     * @return
+     */
+    PayResponse create(OrderDTO orderDTO);
 }
