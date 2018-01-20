@@ -17,4 +17,10 @@ public interface PayService {
      * @return
      */
     PayResponse create(OrderDTO orderDTO);
+
+    /**
+     * 微信异步通知支付结果
+     * @param notifyData
+     */
+    PayResponse notify(String notifyData);
 }
