@@ -3,7 +3,9 @@ package cn.chenhaoxiang.dto;
 import cn.chenhaoxiang.dataObject.OrderDetail;
 import cn.chenhaoxiang.enums.OrderStausEnum;
 import cn.chenhaoxiang.enums.PayStatusEnum;
+import cn.chenhaoxiang.utils.EnumUtil;
 import cn.chenhaoxiang.utils.serializer.Date2LongSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
@@ -86,4 +88,12 @@ public class OrderDTO {
     private List<OrderDetail> orderDetailList;
 //    private List<OrderDetail> orderDetailList = new ArrayList<>();//赋予初始值
 
+    @JsonIgnore //对象转换成json格式返回到前端会忽略该方法
+    public OrderStausEnum getOrderStatusEnum(){
+        return EnumUtil.getByCode(orderStatus,OrderStausEnum.class);
+    }
+    @JsonIgnore //对象转换成json格式返回到前端会忽略该方法
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getByCode(payStatus,PayStatusEnum.class);
+    }
 }

@@ -60,6 +60,7 @@ public class OrderServiceImplTest {
         OrderDTO result = orderService.create(orderDTO);
         log.info("[创建订单] result={}",result);
         Assert.assertNotNull(result);
+
     }
 
     @Test
@@ -76,6 +77,21 @@ public class OrderServiceImplTest {
         log.info("list = {}",orderDTOPage.getContent());
         Assert.assertNotEquals(0,orderDTOPage.getTotalElements());
     }
+
+    /**
+     * 分页查询
+     * @throws Exception
+     */
+    @Test
+    public void list() throws Exception {
+        PageRequest pageRequest = new PageRequest(0,2);
+        Page<OrderDTO> orderDTOPage = orderService.findList(pageRequest);
+        log.info("list = {}",orderDTOPage.getContent());
+//        Assert.assertNotEquals(0,orderDTOPage.getTotalElements());
+        //写得统一一点的话，可以这样
+        Assert.assertTrue("查询所有的订单列表应该大于0",orderDTOPage.getTotalElements()>0);//查询总数大于0
+    }
+
 
     @Test
     public void cancel() throws Exception {

@@ -121,10 +121,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Page<OrderDTO> findList(String buyerOpenid, Pageable pageable) {
         Page<OrderMaster> orderMasterPage = orderMasterDao.findByBuyerOpenid(buyerOpenid,pageable);//这里不需要去查询订单详情
-
         List<OrderDTO> orderDTOList =  OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
-
         return new PageImpl<OrderDTO>(orderDTOList,pageable,orderMasterPage.getTotalElements());
+    }
+
+    @Override
+    public Page<OrderDTO> findList(Pageable pageable) {
+        Page<OrderMaster> orderMasterPage =orderMasterDao.findAll(pageable);//分页查询
+        List<OrderDTO> orderDTOList =  OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
+        return new PageImpl<>(orderDTOList,pageable,orderMasterPage.getTotalElements());
     }
 
     /**
