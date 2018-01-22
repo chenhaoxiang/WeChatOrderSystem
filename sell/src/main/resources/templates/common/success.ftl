@@ -12,7 +12,8 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4>
                     注意!
-                </h4> <strong>${msg}</strong> <a href="${url}" class="alert-link">3s后自动跳转</a>
+                    <#--如果模板的msg没有值，就给一个默认值-->
+                </h4> <strong>${msg!"操作成功"}</strong> <a href="${url}" class="alert-link">3s后自动跳转</a>
             </div>
         </div>
     </div>

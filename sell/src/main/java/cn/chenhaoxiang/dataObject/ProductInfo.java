@@ -1,10 +1,15 @@
 package cn.chenhaoxiang.dataObject;
 
+import cn.chenhaoxiang.enums.ProductStatusEnum;
+import cn.chenhaoxiang.utils.EnumUtil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +20,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Data
+@DynamicUpdate //修改时间字段自动更新的 需要的注解
 public class ProductInfo {
     @Id
     private String productId;
@@ -50,5 +56,22 @@ public class ProductInfo {
      */
     private Integer categoryType;
 
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+    /**
+     * 修改时间
+     */
+    private Date updateTime;
 
+    /**
+     * 上架下架
+     * 注意是公开方法
+     * @return
+     */
+    @JsonIgnore //返回json格式的字符串时，忽略该字段/方法 也就是不序列化
+    public ProductStatusEnum getProductStatusEnum(){
+        return EnumUtil.getByCode(productStatus,ProductStatusEnum.class);
+    }
 }

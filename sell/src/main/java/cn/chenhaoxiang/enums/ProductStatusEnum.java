@@ -10,7 +10,7 @@ import lombok.Getter;
  * Explain: 商品状态
  */
 @Getter //自动生成getter方法
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements CodeEnum<Integer> {
     UP(0,"在架"),
     DOWN(1,"下架")
     ;

@@ -66,4 +66,25 @@ public class ProductInfoServiceImplTest {
         Assert.assertNotNull(result);
     }
 
+    /**
+     * 测试上架
+     * @throws Exception
+     */
+    @Test
+    public void onSale() throws Exception {
+       ProductInfo result = productInfoService.onSale("1234568");
+       Assert.assertEquals(ProductStatusEnum.UP,result.getProductStatusEnum());
+    }
+
+    /**
+     * 测试下架
+     * @throws Exception
+     */
+    @Test
+    public void offSale() throws Exception {
+        ProductInfo result = productInfoService.offSale("1234568");
+        Assert.assertEquals(ProductStatusEnum.DOWN,result.getProductStatusEnum());
+    }
+
+
 }

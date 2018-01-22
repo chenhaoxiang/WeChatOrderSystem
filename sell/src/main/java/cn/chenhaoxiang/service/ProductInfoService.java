@@ -30,7 +30,7 @@ public interface ProductInfoService {
     List<ProductInfo> findUpAll();
 
     /**
-     * 分页查询所有
+     * 分页查询所有 商品列表
      * @param pageable
      * @return
      */
@@ -52,5 +52,15 @@ public interface ProductInfoService {
      * 减库存
      */
     void decreaseStock(List<CartDTO> cartDTOList);
+
+    /**
+     * 上架
+     */
+    ProductInfo onSale(String productId);
+
+    /**
+     * 下架
+     */
+    ProductInfo offSale(String productId);
 
 }
