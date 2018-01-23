@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
  * User: 陈浩翔.
  * Date: 2018/1/18.
  * Time: 下午 6:58.
- * Explain:
+ * Explain: 不用了
  */
 @RestController
 @RequestMapping("/weixin")

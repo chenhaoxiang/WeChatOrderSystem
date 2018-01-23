@@ -1,8 +1,8 @@
 <!-- freemarker的后缀名是ftl，页面返回ModelAndView,获取对象中的属性,下面这行要删除的 -->
-<h1>模板标题,注入的内容:${payResponse.appId}</h1>
+<#--<h1>模板标题,注入的内容:${payResponse.appId}</h1>-->
 
 <script>
-    //不用了，可以删除
+//    不用了，可以删除
     function onBridgeReady(){
         WeixinJSBridge.invoke(
                 'getBrandWCPayRequest', {
