@@ -12,4 +12,4 @@ echo commit is $var
 git commit -am "$var"
 fi
 git push origin master
-sleep 5
+sleep 15
