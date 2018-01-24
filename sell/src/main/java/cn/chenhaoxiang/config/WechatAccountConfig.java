@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLContext;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -55,5 +56,10 @@ public class WechatAccountConfig {
      * 微信支付异步通知地址
      */
     private String notifyUrl;
+
+    /**
+     * 模板消息Id
+     */
+    private Map<String,String> templateId;
 
 }

@@ -15,6 +15,7 @@ import cn.chenhaoxiang.exception.SellException;
 import cn.chenhaoxiang.service.OrderService;
 import cn.chenhaoxiang.service.PayService;
 import cn.chenhaoxiang.service.ProductInfoService;
+import cn.chenhaoxiang.service.PushMessageService;
 import cn.chenhaoxiang.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -51,6 +52,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderMasterDao orderMasterDao;
     @Autowired
     private PayService payService;
+    @Autowired
+    private PushMessageService pushMessageService;
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -193,6 +196,8 @@ public class OrderServiceImpl implements OrderService {
             log.error("[完结订单] 更新失败，orderMaster={}",orderMaster);
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+        //推送微信模板消息  看需求推
+        pushMessageService.orderStatus(orderDTO);
         return orderDTO;
     }
 

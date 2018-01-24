@@ -30,7 +30,10 @@ spring:
   # 配置Url项目名 也就是URl的前缀
 #  context-path: /sell
 wechat:
-  mpAppId: wxd898fcb01713c658
+#  师兄干货的
+#  mpAppId: wxd898fcb01713c658
+#  mpAppSecret: ed8bcd6a5acb51382cb967f1cf19ac89
+  mpAppId: wxe007de634e454627
   mpAppSecret: ed8bcd6a5acb51382cb967f1cf19ac89
   openAppId: wxd898fcb01713c658
   openAppSecret: wxd898fcb01713c658
@@ -38,6 +41,8 @@ wechat:
   mchKey: C5245D70627C1F8E9964D494B0735025
   keyPath:  F:/h5.p12 #文件路径
   notifyUrl: http://anyi.nat300.top/pay/notify #异步通知地址
+  templateId:
+    orderStatus: 3YRLwuwGNGc15Stk_ycFYshgh9jA_dpc493TDPn4OH8
 
 projectUrl:
   wechatMpAuthorize: http://anyi.nat300.top
