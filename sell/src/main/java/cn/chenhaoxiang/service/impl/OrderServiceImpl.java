@@ -12,10 +12,7 @@ import cn.chenhaoxiang.enums.OrderStausEnum;
 import cn.chenhaoxiang.enums.PayStatusEnum;
 import cn.chenhaoxiang.enums.ResultEnum;
 import cn.chenhaoxiang.exception.SellException;
-import cn.chenhaoxiang.service.OrderService;
-import cn.chenhaoxiang.service.PayService;
-import cn.chenhaoxiang.service.ProductInfoService;
-import cn.chenhaoxiang.service.PushMessageService;
+import cn.chenhaoxiang.service.*;
 import cn.chenhaoxiang.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -54,6 +51,9 @@ public class OrderServiceImpl implements OrderService {
     private PayService payService;
     @Autowired
     private PushMessageService pushMessageService;
+
+    @Autowired
+    private WebSocket webSocket;
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -102,6 +102,9 @@ public class OrderServiceImpl implements OrderService {
         new CartDTO(e.getProductId(),e.getProductQuantity()))
                 .collect(Collectors.toList());//Java8新特性 (java8 lambda) 推荐
         productInfoService.decreaseStock(cartDTOList);//判断数量是否够
+
+        //发送websocket消息
+        webSocket.sendMessage(orderDTO.getOrderId());
         return orderDTO;
     }
 

@@ -101,6 +101,69 @@
         </div>
     </div>
 
+    <#--弹窗-->
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        提醒
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    您有新的订单
+                </div>
+                <div class="modal-footer">
+                    <button onclick="document.getElementById('notice').pause();" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button onclick="location.reload()" type="button" class="btn btn-primary">查看新的订单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <#--播放音乐 loop="loop"循环播放-->
+    <audio id="notice" loop="loop">
+        <source src="/mp3/song.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        var webSocket = null;
+        if('WebSocket' in window) {//判断浏览器是否支持
+            webSocket = new WebSocket('ws://anyi.nat300.top/webSocket');
+        }else{
+            alert('该浏览器不支持webSocket');
+        }
+        webSocket.onopen = function (event) {
+            console.log("建立连接");
+        }
+
+        webSocket.onclose = function (event) {
+            console.log("连接关闭");
+        }
+
+        webSocket.onmessage = function (event) {
+            console.log("收到消息:"+event.data);
+            //收到消息后可以做一系列事件
+            $("#myModal").modal('show');//弹窗
+            //播放音乐
+            document.getElementById('notice').play();
+        }
+
+        webSocket.onerror = function (event) {
+            alert("webSocket通信发生错误");
+        }
+
+        /**
+         * 页面关闭前事件
+         */
+        window.onbeforeunload = function () {
+            webSocket.close();//关闭websocket
+        }
+
+    </script>
     </body>
 
 </html>

@@ -26,8 +26,9 @@ import javax.servlet.http.HttpServletRequest;
  * Time: 下午 8:31.
  * Explain: 卖家授权aop
  */
-@Aspect
-@Component
+//TODO 暂时屏蔽 能够登录后需要放开，也就是有开放平台登录账号
+//@Aspect
+//@Component
 @Slf4j
 public class SellerAuthorizeAspect {
 
