@@ -20,6 +20,10 @@ spring:
   # 打印SQL
     show-sql: true
     # 为null的属性不序列化成json字符串 - 也就是前端不会看到为null的属性
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: chenhaoxiang
 #  jackson:
 #    default-property-inclusion: non_null
 #server:
@@ -28,7 +32,14 @@ spring:
 wechat:
   mpAppId: wxd898fcb01713c658
   mpAppSecret: ed8bcd6a5acb51382cb967f1cf19ac89
+  openAppId: wxd898fcb01713c658
+  openAppSecret: wxd898fcb01713c658
   mchId: 1483469312
   mchKey: C5245D70627C1F8E9964D494B0735025
   keyPath:  F:/h5.p12 #文件路径
   notifyUrl: http://anyi.nat300.top/pay/notify #异步通知地址
+
+projectUrl:
+  wechatMpAuthorize: http://anyi.nat300.top
+  wechatOpenAuthorize: http://anyi.nat300.top
+  project: http://anyi.nat300.top

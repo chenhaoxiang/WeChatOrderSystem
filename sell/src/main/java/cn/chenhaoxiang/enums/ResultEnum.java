@@ -44,6 +44,11 @@ public enum ResultEnum {
     PRODUCT_ONSALE_SUCCESS(25,"商品上架成功"),
 
     PRODUCT_OFFSALE_SUCCESS(26,"商品下架成功"),
+
+    WECHAT_QR_ERROR(27,"微信开放平台账号方面错误"),
+
+    LOGIN_FAIL(28,"登录失败,登录信息不正确"),
+    LOGOUT_SUCCESS(29,"登出成功"),
     ;
     private Integer code;
     private String message;

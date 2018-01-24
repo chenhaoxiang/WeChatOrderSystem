@@ -11,24 +11,28 @@ import org.springframework.stereotype.Component;
 /**
  * Created with IntelliJ IDEA.
  * User: 陈浩翔.
- * Date: 2018/1/18.
- * Time: 下午 7:47.
- * Explain:MP-公众号的意思  微信公众号配置
+ * Date: 2018/1/24.
+ * Time: 下午 6:58.
+ * Explain: 微信开放平台配置
  */
 @Component
-public class WechatMpConfig {
+public class WechatOpenConfig {
     @Autowired
     private WechatAccountConfig wechatAccountConfig;
-    @Bean//作为一个Bean
-    public WxMpService wxMpService(){
+
+    @Bean
+    public WxMpService wxOpenService(){
         WxMpService wxMpService = new WxMpServiceImpl();
-        wxMpService.setWxMpConfigStorage(wxMpConfigStorage());
+        wxMpService.setWxMpConfigStorage(wxOpenConfigStorage());
         return wxMpService;
     }
-    public WxMpConfigStorage wxMpConfigStorage(){
-        WxMpInMemoryConfigStorage wxMpInMemoryConfigStorage = new WxMpInMemoryConfigStorage();//基于内存的
-        wxMpInMemoryConfigStorage.setAppId(wechatAccountConfig.getMpAppId());
-        wxMpInMemoryConfigStorage.setSecret(wechatAccountConfig.getMpAppSecret());
+
+    @Bean
+    public WxMpConfigStorage wxOpenConfigStorage(){
+        WxMpInMemoryConfigStorage wxMpInMemoryConfigStorage = new WxMpInMemoryConfigStorage();
+        wxMpInMemoryConfigStorage.setAppId(wechatAccountConfig.getOpenAppId());
+        wxMpInMemoryConfigStorage.setSecret(wechatAccountConfig.getOpenAppSecret());
         return wxMpInMemoryConfigStorage;
     }
+
 }
