@@ -138,11 +138,13 @@
         }
         webSocket.onopen = function (event) {
             console.log("建立连接");
+            setTimeout(function(){webSocket.send("测试")},10000);
         }
 
         webSocket.onclose = function (event) {
             console.log("连接关闭");
         }
+
 
         webSocket.onmessage = function (event) {
             console.log("收到消息:"+event.data);

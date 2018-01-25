@@ -11,6 +11,7 @@ import cn.chenhaoxiang.dto.OrderDTO;
 import cn.chenhaoxiang.enums.OrderStausEnum;
 import cn.chenhaoxiang.enums.PayStatusEnum;
 import cn.chenhaoxiang.enums.ResultEnum;
+import cn.chenhaoxiang.exception.ResponseBankException;
 import cn.chenhaoxiang.exception.SellException;
 import cn.chenhaoxiang.service.*;
 import cn.chenhaoxiang.utils.KeyUtil;
@@ -66,6 +67,7 @@ public class OrderServiceImpl implements OrderService {
             ProductInfo productInfo = productInfoService.findOne(orderDetail.getProductId());
             if(productInfo==null){//商品不存在
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+//                throw new ResponseBankException(ResultEnum.PRODUCT_NOT_EXIST);//修改状态码返回
             }
             //2.计算总价
             orderAmount=productInfo.getProductPrice()

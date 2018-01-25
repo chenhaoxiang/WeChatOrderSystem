@@ -76,7 +76,7 @@ public class BuyerOrderController {
         //第二种  请见Date2LongSerializer类
 
         //约束二:为null的属性不返回到前端， 也就是类转json 属性为NULL的不参加序列化
-        //第一种方法，到类上使用JsonInclude注解
+        //第一种方法，到类上使用JsonInclude(JsonInclude.Include.NON_NULL)注解
         //但是对象很多的时候，每个类去加的话，有些麻烦。
         //第二种方法:全局配置 spring: jackson: default-property-inclusion: non_null
 

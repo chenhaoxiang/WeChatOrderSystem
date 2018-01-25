@@ -1,5 +1,6 @@
 package cn.chenhaoxiang.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**
@@ -10,8 +11,8 @@ import lombok.Data;
  * Explain: http请求返回的最外层对象
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL) //为null的属性不返回到前端， 也就是类转json 属性为NULL的不参加序列化
 public class ResultVO<T> {
-
     /**
      * 错误码
      */

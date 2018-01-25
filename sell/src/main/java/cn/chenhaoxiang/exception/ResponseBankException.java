@@ -6,22 +6,22 @@ import lombok.Data;
 /**
  * Created with IntelliJ IDEA.
  * User: 陈浩翔.
- * Date: 2018/1/14.
- * Time: 下午 10:46.
- * Explain: 自定义异常
+ * Date: 2018/1/25.
+ * Time: 下午 8:48.
+ * Explain: 返回错误状态码的异常 出现该异常不返回200
  */
 @Data
-public class SellException extends RuntimeException{
+public class ResponseBankException extends RuntimeException{
 
     private Integer code;
 
-    public SellException(ResultEnum resultEnum) {
+    public ResponseBankException(ResultEnum resultEnum) {
         super(resultEnum.getMessage());
         this.code = resultEnum.getCode();
     }
 
 
-    public SellException(Integer code, String defaultMessage) {
+    public ResponseBankException(Integer code, String defaultMessage) {
         super(defaultMessage);
         this.code=code;
     }
