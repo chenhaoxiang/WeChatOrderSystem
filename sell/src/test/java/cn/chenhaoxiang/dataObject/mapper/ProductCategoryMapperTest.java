@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -55,11 +56,38 @@ public class ProductCategoryMapperTest {
 
     @Test
     public void findByCategoryType() throws Exception {
-        ProductCategory productCategory =productCategoryMapper.findByCategoryType(11);
+        ProductCategory productCategory =productCategoryMapper.findByCategoryType(9);
         log.info("productCategory={}",productCategory);
         Assert.assertNotNull(productCategory);
     }
 
+    @Test
+    public void findByCategoryName() throws Exception {
+        List<ProductCategory> productCategoryList =productCategoryMapper.findByCategoryName("美味的");
+        log.info("productCategoryList={}",productCategoryList);
+        Assert.assertNotEquals(0,productCategoryList.size());
+    }
 
+    @Test
+    public void updateByCategoryType() throws Exception {
+        int result =productCategoryMapper.updateByCategoryType(11,"测试11");
+        Assert.assertEquals(1,result);
+    }
+
+    @Test
+    public void updateByObject() throws Exception {
+        ProductCategory productCategory = new ProductCategory();
+        productCategory.setCategoryName("美味的");
+        productCategory.setCategoryType(11);
+        int result =productCategoryMapper.updateByObject(productCategory);
+        Assert.assertEquals(1,result);
+    }
+
+
+    @Test
+    public void deleteByCategoryType() throws Exception {
+        int result =productCategoryMapper.deleteByCategoryType(11);
+        Assert.assertEquals(1,result);
+    }
 
 }

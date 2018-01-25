@@ -48,3 +48,6 @@ projectUrl:
   wechatMpAuthorize: http://anyi.nat300.top
   wechatOpenAuthorize: http://anyi.nat300.top
   project: http://anyi.nat300.top
+logging:
+  level:
+    cn.chenhaoxiang: debug
