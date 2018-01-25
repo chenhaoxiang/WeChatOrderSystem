@@ -14,7 +14,7 @@ import java.util.Map;
  * User: 陈浩翔.
  * Date: 2018/1/25.
  * Time: 下午 11:59.
- * Explain: 使用MyBatis的Dao
+ * Explain: 使用MyBatis的Dao测试
  */
 @Repository
 public class ProductCategoryMyBatisDao {

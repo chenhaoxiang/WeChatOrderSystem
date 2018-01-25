@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * User: 陈浩翔.
  * Date: 2018/1/26.
  * Time: 上午 12:07.
- * Explain:
+ * Explain: 进行简单的测试
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
