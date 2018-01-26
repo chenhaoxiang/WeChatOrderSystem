@@ -87,4 +87,15 @@ public interface ProductCategoryMapper {
      */
     @Delete("delete from product_category where category_type=#{categoryType}")
     int deleteByCategoryType(Integer categoryType);
+
+    /**
+     * 配置xml的方式实现查询
+     * 配置文件的resources下面
+     * 在yml配置文件中配置xml的扫描路径
+     * xml的写法可以百度一下，spring集成mybatis的，现在很多人的写法都是这种xml的。包括我自己，哈哈，以后的项目会用注解方式了
+     * mybatis官方不推荐这种写法噢
+     * @param categoryType
+     * @return
+     */
+    ProductCategory selectByCategoryType(Integer categoryType);
 }

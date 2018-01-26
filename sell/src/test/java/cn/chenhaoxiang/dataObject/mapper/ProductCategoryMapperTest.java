@@ -90,4 +90,12 @@ public class ProductCategoryMapperTest {
         Assert.assertEquals(1,result);
     }
 
+    @Test
+    public void selectByCategoryType() throws Exception {
+        ProductCategory productCategory =productCategoryMapper.selectByCategoryType(9);
+        log.info("返回结果={}",productCategory);
+        Assert.assertNotNull(productCategory);
+    }
+
+
 }

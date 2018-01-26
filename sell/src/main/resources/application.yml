@@ -48,6 +48,8 @@ projectUrl:
   wechatMpAuthorize: http://anyi.nat300.top
   wechatOpenAuthorize: http://anyi.nat300.top
   project: http://anyi.nat300.top
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
 #  设置cn.chenhaoxiang包下所有类的日志输出级别-debug能看到执行的sql
 #logging:
 #  level:
