@@ -37,7 +37,8 @@ public class BuyerProductController {
     @Autowired
     private ProductCategoryService productCategoryService;
     @GetMapping("list")
-    @Cacheable(cacheNames = "product",key = "123",unless = "#result.getCode() != 0") //Redis缓存注解  Cacheable第一次访问会访问到方内的内容，方法会返回一个对象，返回对象的时候，会把这个对象存储。下一次访问的时候，不会进去这个方法，直接从redis缓存中拿
+    @Cacheable(cacheNames = "product",key = "123",unless = "#result.getCode() != 0")
+    //Redis缓存注解  Cacheable第一次访问会访问到方内的内容，方法会返回一个对象，返回对象的时候，会把这个对象存储。下一次访问的时候，不会进去这个方法，直接从redis缓存中拿
     //上面的key的值是可以动态写的@Cacheable(cacheNames = "product",key = "#sellerId")  sellerId为方法中的参数名
     //condition判断是否成立的条件  例如key = "#sellerId",condition = "#sellerId.length() > 3"  只有条件成立才会对结果缓存，结果不成立是不缓存的
     //依据结果来判断是否缓存 unless = "#result.getCode() != 0",#result其实就是ResultVO，也就是返回的对象

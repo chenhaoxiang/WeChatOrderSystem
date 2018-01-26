@@ -21,7 +21,7 @@ public class RedisLock {
 
     /**
      * 加锁
-     * @param key productId
+     * @param key productId - 商品的唯一标志
      * @param value  当前时间+超时时间
      * @return
      */
