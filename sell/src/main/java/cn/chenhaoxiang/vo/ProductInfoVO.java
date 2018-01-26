@@ -3,6 +3,7 @@ package cn.chenhaoxiang.vo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -13,13 +14,14 @@ import java.math.BigDecimal;
  * Explain: 商品详情  返回给前端的
  */
 @Data
-public class ProductInfoVO {
+public class ProductInfoVO implements Serializable{
+    private static final long serialVersionUID = 4177439763246797991L;
     @JsonProperty("id")
     private String productId;
     @JsonProperty("name")
     private String productName;
     @JsonProperty("price")
-    private BigDecimal productProce;
+    private BigDecimal productPrice;
     @JsonProperty("description")
     private String productDescription;
     @JsonProperty("icon")

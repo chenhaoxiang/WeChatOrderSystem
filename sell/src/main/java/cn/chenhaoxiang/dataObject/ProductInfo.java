@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -21,7 +22,8 @@ import java.util.Date;
 @Entity
 @Data
 @DynamicUpdate //修改时间字段自动更新的 需要的注解
-public class ProductInfo {
+public class ProductInfo implements Serializable{
+    private static final long serialVersionUID = -3048495745484346347L;
     @Id
     private String productId;
 

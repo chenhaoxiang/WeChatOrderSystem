@@ -51,6 +51,6 @@ projectUrl:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 #  设置cn.chenhaoxiang包下所有类的日志输出级别-debug能看到执行的sql
-#logging:
-#  level:
-#    cn.chenhaoxiang: debug
+logging:
+  level:
+    cn.chenhaoxiang: debug

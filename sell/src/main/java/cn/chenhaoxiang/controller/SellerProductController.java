@@ -11,6 +11,8 @@ import cn.chenhaoxiang.service.ProductInfoService;
 import cn.chenhaoxiang.utils.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -122,6 +124,10 @@ public class SellerProductController {
      * @return @Valid用来校验变量
      */
     @PostMapping("/save")
+//    @CacheEvict(cacheNames = "product",key = "123") //访问这个方法之后删除对应的缓存  对应之前的Redis缓存注解的配置 。key如果不填，默认是空，对应的值应该就是方法的参数的值了.对应BuyerProductController-list的缓存
+//    @CachePut(cacheNames = "product",key = "123") //对应之前的Redis缓存注解的配置
+    //@CachePut 每次还是会执行方法中的内容，每次执行完成后会把返回的内容放到Redis中去.
+    // 这种注解和原来对应的返回对象需要是相同的才行，这里返回的是ModelAndView。可以到service层注解或者dao层注解CachePut
     public ModelAndView save(@Valid ProductForm productForm,
                              BindingResult bindingResult,
                              Map<String,Object> map){

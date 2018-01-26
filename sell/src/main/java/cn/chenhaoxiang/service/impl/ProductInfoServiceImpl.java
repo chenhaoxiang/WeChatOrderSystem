@@ -8,6 +8,9 @@ import cn.chenhaoxiang.enums.ResultEnum;
 import cn.chenhaoxiang.exception.SellException;
 import cn.chenhaoxiang.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,12 +26,15 @@ import java.util.List;
  * Explain:
  */
 @Service
+//@CacheConfig(cacheNames = "product") //配置整个类的缓存cacheNames,相当于作用域
 public class ProductInfoServiceImpl implements ProductInfoService {
 
     @Autowired
     private ProductInfoDao productInfoDao;
 
     @Override
+//    @Cacheable(key = "123") //注解缓存
+//    @Cacheable(cacheNames = "product",key = "123") //注解缓存
     public ProductInfo findOne(String productInfoId) {
         return productInfoDao.findOne(productInfoId);
     }
@@ -44,6 +50,8 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     }
 
     @Override
+//    @CachePut(key = "123") //和上面findOne的返回对象对应
+//    @CachePut(cacheNames = "product",key = "123") //和上面findOne的返回对象对应
     public ProductInfo save(ProductInfo productInfo) {
         return productInfoDao.save(productInfo);
     }
