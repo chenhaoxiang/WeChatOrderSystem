@@ -1,0 +1,56 @@
+# logback的简单配置
+#logging:
+#  pattern:
+#  配置日志格式
+#    console: "%d - %msg%n"
+#  配置日志级别  日志级别可以指定到某个类
+#  level:
+#    cn.chenhaoxiang.LoggerTest: debug
+# 配置日志文件。可以自定义日志文件名字
+#  file:
+#  配置存储路径 不配置就不会保存到文件 默认spring.log
+#  path:
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 1234
+    url: jdbc:mysql://127.0.0.1/wechatorder?characterEncoding=utf-8&userSSL=false
+  jpa:
+  # 打印SQL
+    show-sql: true
+    # 为null的属性不序列化成json字符串 - 也就是前端不会看到为null的属性
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: chenhaoxiang
+#  jackson:
+#    default-property-inclusion: non_null
+#server:
+  # 配置Url项目名 也就是URl的前缀
+#  context-path: /sell
+wechat:
+#  师兄干货的
+#  mpAppId: wxd898fcb01713c658
+#  mpAppSecret: ed8bcd6a5acb51382cb967f1cf19ac89
+  mpAppId: wxe007de634e454627
+  mpAppSecret: ed8bcd6a5acb51382cb967f1cf19ac89
+  openAppId: wxd898fcb01713c658
+  openAppSecret: wxd898fcb01713c658
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath:  F:/h5.p12 #文件路径
+  notifyUrl: http://anyi.nat300.top/pay/notify #异步通知地址
+  templateId:
+    orderStatus: 3YRLwuwGNGc15Stk_ycFYshgh9jA_dpc493TDPn4OH8
+
+projectUrl:
+  wechatMpAuthorize: http://anyi.nat300.top
+  wechatOpenAuthorize: http://anyi.nat300.top
+  project: http://anyi.nat300.top
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#  设置cn.chenhaoxiang包下所有类的日志输出级别-debug能看到执行的sql
+logging:
+  level:
+    cn.chenhaoxiang: debug

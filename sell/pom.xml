@@ -120,6 +120,15 @@
 	</dependencies>
 
 	<build>
+		<!--打成包的包名
+		启动命令和指定端口: java -jar jar包名 \-\-server.port=8090
+		多个配置文件，指定配置文件 \-\-spring.profiles.active=prod
+		linux后台运行发布:nohup java -jar jar包名 > /dev/null 2>&1 &
+		linux查看进程: ps -ef |grep jar包名
+
+		-->
+		<finalName>sell</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
